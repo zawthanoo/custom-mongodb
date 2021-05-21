@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ template "custom-mongodb.fullname" . }}
   labels:
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    app: {{ template "custom-mongodb.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
