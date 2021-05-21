@@ -3,7 +3,9 @@ kind: Service
 metadata:
   name: {{ template "custom-mongodb.fullname" . }}
   labels:
+    app: {{ template "custom-mongodb.fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+    release: {{ .Release.Name }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -13,4 +15,4 @@ spec:
     name: {{ .Values.service.name }}
   selector:
     app: {{ template "custom-mongodb.fullname" . }}
-    tier: {{ .Values.service.tier }}
+    release: {{ .Release.Name }}

@@ -4,6 +4,7 @@ metadata:
   name: {{ template "custom-mongodb.fullname" . }}-volume
   labels:
     app: {{ template "custom-mongodb.fullname" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
 spec:
   capacity:

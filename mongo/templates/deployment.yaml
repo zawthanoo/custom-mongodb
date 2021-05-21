@@ -14,10 +14,11 @@ spec:
     metadata:
       labels:
         app: {{ template "custom-mongodb.fullname" . }}
+        chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
         release: {{ .Release.Name }}
     spec:
       containers:
-      - name: {{ .Chart.Name }}
+      - name: {{ template "custom-mongodb.fullname" . }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:

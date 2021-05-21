@@ -4,6 +4,8 @@ metadata:
   name: {{ template "custom-mongodb.fullname" . }}-pv-claim
   labels:
     name: {{ template "custom-mongodb.fullname" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
 spec:
   accessModes:
     - {{ .Values.persistentVolume.accessMode | quote }}
