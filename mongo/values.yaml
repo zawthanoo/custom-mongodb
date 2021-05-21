@@ -25,7 +25,7 @@ resources:
 persistentVolume:
   capacity: 1Gi
   accessMode: ReadWriteMany
-  nfsServer: 172.21.171.10
+  nfsServer: 172.22.254.13
   nfsPath: /nfs
 
 readinessProbe:
