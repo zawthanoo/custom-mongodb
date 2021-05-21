@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: {{ template "custom-mongodb.fullname" . }}
-        tier: {{ .Values.service.tier }}
+        release: {{ .Release.Name }}
     spec:
       containers:
       - name: {{ .Chart.Name }}
