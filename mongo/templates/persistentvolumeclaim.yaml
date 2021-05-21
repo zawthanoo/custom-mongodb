@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ template "custom-mongodb.fullname" . }}-pv-claim
+  labels:
+    name: {{ template "custom-mongodb.fullname" . }}
+spec:
+  accessModes:
+    - {{ .Values.persistentVolume.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.persistentVolume.capacity | quote }}
+  selector:
+    matchLabels:
+      app: {{ template "custom-mongodb.fullname" . }}
+      release: {{ .Release.Name }}
